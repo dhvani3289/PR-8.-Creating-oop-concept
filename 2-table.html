@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 25px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Phone number</th>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="email"></td>
+            <td class="phone"></td>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="email"></td>
+            <td class="phone"></td>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="email"></td>
+            <td class="phone"></td>
+        </tr>
+        <tr>
+            <td class="name"></td>
+            <td class="email"></td>
+            <td class="phone"></td>
+        </tr>
+
+    </table>
+    <script>
+        let data = [
+            { name: "jay", email: "jay@gmail.com", phone: "12345" },
+            { name: "ajay", email: "ajay@gmail.com", phone: "12345" },
+            { name: "vijay", email: "vijay@gmail.com", phone: "12345" },
+            { name: "ashish", email: "ashish@gmail.com", phone: "12345" },
+        ];
+
+        // Get the table element (assuming you have an ID or class for it)
+        let table = document.querySelector("table"); // Replace with your actual ID or selector
+
+        // Loop through data and insert content into rows
+        for (let i = 1; i <= data.length; i++) {
+            let currentRow = table.rows[i];  // Get the row at index i
+
+            if (currentRow) {  // Check if a row exists
+                let cells = currentRow.querySelectorAll("td");  // Get all cells in the row
+
+                // Check if the number of cells matches the data properties
+                if (cells.length === 3) {  // Assuming 3 data points (name, email, phone)
+                    cells[0].textContent = data[i].name;
+                    cells[1].textContent = data[i].email;
+                    cells[2].textContent = data[i].phone;
+                } else {
+                    console.error("Number of cells in row " + (i + 1) + " doesn't match data properties. Skipping...");
+                }
+            } else {
+                console.error("Row " + (i + 1) + " not found in the table. Skipping...");
+            }
+        }
+
+    </script>
+</body>
+
+</html>
